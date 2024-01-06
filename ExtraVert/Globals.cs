@@ -39,6 +39,8 @@ namespace ExtraVert
             },
         };
 
+        public static List<Plant> plantsAvailable = Plants.Where(plant => !plant.Sold).ToList();
+
         public static void Greeting() 
         {
             Console.WriteLine("Welcome to ExtraVert!");

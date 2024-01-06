@@ -10,6 +10,14 @@ namespace ExtraVert
 {
     internal class PlantFunctions
     {
+        // PLANT OF THE DAY
+        public static string ChooseRandPlant()
+        { 
+            Random random = new Random();
+            int randIndx = random.Next(0, Globals.plantsAvailable.Count);
+            return (Globals.plantsAvailable[randIndx].Species);
+        }
+
         // CREATE
         public static void AddPlant()
         {
@@ -55,13 +63,12 @@ namespace ExtraVert
             int choice;
 
             Console.WriteLine("Choose the plant you wish to adopt");
-            List<Plant> plantsAvailable = Globals.Plants.Where(plant => !plant.Sold).ToList();
-            for (int i = 0; i < plantsAvailable.Count; i++)
+            for (int i = 0; i < Globals.plantsAvailable.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. {plantsAvailable[i].Species}");
+                Console.WriteLine($"{i + 1}. {Globals.plantsAvailable[i].Species}");
             }
             choice = Int32.Parse(Console.ReadLine());
-            object chosenPlant = plantsAvailable[choice - 1];
+            object chosenPlant = Globals.plantsAvailable[choice - 1];
 
             foreach (PropertyDescriptor desc in TypeDescriptor.GetProperties(chosenPlant))
             {
