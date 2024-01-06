@@ -18,6 +18,19 @@ namespace ExtraVert
             return (Globals.plantsAvailable[randIndx].Species);
         }
 
+        // SEARCH BY LIGHT NEEDS
+        public static void SearchByLightNeeds()
+        {
+            int choice;
+            Console.WriteLine("What light need can you support? Please input a number 1-5.");
+            choice = Int16.Parse(Console.ReadLine());
+            List<Plant> searchedPlant = Globals.plantsAvailable.Where(plant => plant.LightNeeds == choice).ToList();
+            foreach (Plant plant in searchedPlant)
+            {
+                Console.WriteLine(plant.Species);
+            }
+        }
+
         // CREATE
         public static void AddPlant()
         {

@@ -56,7 +56,8 @@ namespace ExtraVert
                       1. View All Plants
                       2. Add a Plant 
                       3. Adopt a Plant
-                      4. Delist a Plant");
+                      4. Delist a Plant
+                      5. Search plants based on light needs");
                 choice = Console.ReadLine();
 
                 switch (choice)
@@ -75,6 +76,9 @@ namespace ExtraVert
                         break;
                     case "4":
                         PlantFunctions.DelistAPlant();
+                        break;
+                    case "5":
+                        PlantFunctions.SearchByLightNeeds();
                         break;
                     default: Console.WriteLine("Please choose a valid option");
                         break;
