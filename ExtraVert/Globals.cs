@@ -66,7 +66,7 @@ namespace ExtraVert
                         PlantFunctions.ViewPlants();
                         break;
                     case "2":
-                        Console.WriteLine("Create a Plant");
+                        PlantFunctions.AddPlant();
                         break;
                     case "3":
                         Console.WriteLine("Adopt a Plant");

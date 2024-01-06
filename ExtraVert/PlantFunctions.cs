@@ -9,6 +9,34 @@ namespace ExtraVert
 {
     internal class PlantFunctions
     {
+        // CREATE
+        public static void AddPlant()
+        {
+            // OBTAINING USER INPUT
+            Console.WriteLine("Please supply the plant species");
+            string plantSpecies = Console.ReadLine();
+            Console.WriteLine("Please supply the light needs of the plant on a scale from 1-5");
+            int plantLightNeeds = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Please supply the asking price of the plant");
+            decimal plantAskingPrice = Decimal.Parse(Console.ReadLine());
+            Console.WriteLine("Please supply the city name of the plant");
+            string plantCityName = Console.ReadLine();
+            Console.WriteLine("Please supply the zip code");
+            int plantZipCode = Int32.Parse(Console.ReadLine());
+
+            // Taking user input and appending it to new instance of proj
+            Plant PlantToAdd = new Plant();
+            PlantToAdd.Species = plantSpecies;
+            PlantToAdd.LightNeeds = plantLightNeeds;
+            PlantToAdd.AskingPrice = plantAskingPrice;
+            PlantToAdd.City = plantCityName;
+            PlantToAdd.Zip = plantZipCode;
+            PlantToAdd.Sold = false;
+
+            // Adding user created plant
+            Globals.Plants.Add(PlantToAdd);
+        }
+
         // READ
         public static void ViewPlants()
         {
