@@ -72,5 +72,33 @@ namespace ExtraVert
 
 
         }
+
+        // DELETE
+        public static void DelistAPlant()
+        {
+            string choice = null;
+
+            while (choice != "0")
+            {
+                try
+                {
+                    // loop through products but create a ReadLine
+                    Console.WriteLine("0. Goodbye");
+                    for (int i = 0; i < Globals.Plants.Count; i++)
+                    {
+                        Console.WriteLine($"{i + 1}. {Globals.Plants[i].Species}");
+
+                    }
+                    choice = Console.ReadLine();
+                    Globals.Plants.RemoveAt(Int32.Parse(choice) - 1);
+                }
+                catch
+                {
+                    break;
+                }
+
+            }
+
+        }
     }
 }

@@ -72,7 +72,7 @@ namespace ExtraVert
                         PlantFunctions.AdoptPlant();
                         break;
                     case "4":
-                        Console.WriteLine("Delist a Plant");
+                        PlantFunctions.DelistAPlant();
                         break;
                     default: Console.WriteLine("Please choose a valid option");
                         break;
