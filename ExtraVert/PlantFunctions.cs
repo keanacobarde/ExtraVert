@@ -14,7 +14,8 @@ namespace ExtraVert
         {
             for (int i = 0; i < Globals.Plants.Count; i++)
             {
-                Console.WriteLine($"{i + 1} - {Globals.Plants[i].Species}");
+                string soldStatusString = Globals.Plants[i].Sold ? "was sold" : "is available";
+                Console.WriteLine($"{i + 1}. {Globals.Plants[i].Species} in {Globals.Plants[i].City} {soldStatusString} for {Globals.Plants[i].AskingPrice} dollars");
             }
 
         }

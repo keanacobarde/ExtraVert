@@ -74,6 +74,8 @@ namespace ExtraVert
                     case "4":
                         Console.WriteLine("Delist a Plant");
                         break;
+                    default: Console.WriteLine("Please choose a valid option");
+                        break;
                 }
             }
 
