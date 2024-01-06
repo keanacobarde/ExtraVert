@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -45,6 +46,30 @@ namespace ExtraVert
                 string soldStatusString = Globals.Plants[i].Sold ? "was sold" : "is available";
                 Console.WriteLine($"{i + 1}. {Globals.Plants[i].Species} in {Globals.Plants[i].City} {soldStatusString} for {Globals.Plants[i].AskingPrice} dollars");
             }
+
+        }
+
+        //ADOPT
+        public static void AdoptPlant()
+        {
+            int choice;
+
+            Console.WriteLine("Choose the plant you wish to adopt");
+            List<Plant> plantsAvailable = Globals.Plants.Where(plant => !plant.Sold).ToList();
+            for (int i = 0; i < plantsAvailable.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {plantsAvailable[i].Species}");
+            }
+            choice = Int32.Parse(Console.ReadLine());
+            object chosenPlant = plantsAvailable[choice - 1];
+
+            foreach (PropertyDescriptor desc in TypeDescriptor.GetProperties(chosenPlant))
+            {
+                  if (desc.Name == "Sold") {
+                    desc.SetValue(chosenPlant, true);
+                  }
+            }
+
 
         }
     }

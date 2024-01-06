@@ -69,7 +69,7 @@ namespace ExtraVert
                         PlantFunctions.AddPlant();
                         break;
                     case "3":
-                        Console.WriteLine("Adopt a Plant");
+                        PlantFunctions.AdoptPlant();
                         break;
                     case "4":
                         Console.WriteLine("Delist a Plant");
