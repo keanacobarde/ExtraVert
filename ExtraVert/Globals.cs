@@ -39,6 +39,8 @@ namespace ExtraVert
             },
         };
 
+        public static List<Plant> plantsAvailable = Plants.Where(plant => !plant.Sold).ToList();
+
         public static void Greeting() 
         {
             Console.WriteLine("Welcome to ExtraVert!");
@@ -54,7 +56,8 @@ namespace ExtraVert
                       1. View All Plants
                       2. Add a Plant 
                       3. Adopt a Plant
-                      4. Delist a Plant");
+                      4. Delist a Plant
+                      5. Search plants based on light needs");
                 choice = Console.ReadLine();
 
                 switch (choice)
@@ -66,13 +69,18 @@ namespace ExtraVert
                         PlantFunctions.ViewPlants();
                         break;
                     case "2":
-                        Console.WriteLine("Create a Plant");
+                        PlantFunctions.AddPlant();
                         break;
                     case "3":
-                        Console.WriteLine("Adopt a Plant");
+                        PlantFunctions.AdoptPlant();
                         break;
                     case "4":
-                        Console.WriteLine("Delist a Plant");
+                        PlantFunctions.DelistAPlant();
+                        break;
+                    case "5":
+                        PlantFunctions.SearchByLightNeeds();
+                        break;
+                    default: Console.WriteLine("Please choose a valid option");
                         break;
                 }
             }

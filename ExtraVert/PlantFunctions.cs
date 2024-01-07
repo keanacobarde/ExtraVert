@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -9,12 +10,113 @@ namespace ExtraVert
 {
     internal class PlantFunctions
     {
+        // PLANT OF THE DAY
+        public static string ChooseRandPlant()
+        { 
+            Random random = new Random();
+            int randIndx = random.Next(0, Globals.plantsAvailable.Count);
+            return (Globals.plantsAvailable[randIndx].Species);
+        }
+
+        // SEARCH BY LIGHT NEEDS
+        public static void SearchByLightNeeds()
+        {
+            int choice;
+            Console.WriteLine("What light need can you support? Please input a number 1-5.");
+            choice = Int16.Parse(Console.ReadLine());
+            List<Plant> searchedPlant = Globals.plantsAvailable.Where(plant => plant.LightNeeds == choice).ToList();
+            foreach (Plant plant in searchedPlant)
+            {
+                Console.WriteLine(plant.Species);
+            }
+        }
+
+        // CREATE
+        public static void AddPlant()
+        {
+            // OBTAINING USER INPUT
+            Console.WriteLine("Please supply the plant species");
+            string plantSpecies = Console.ReadLine();
+            Console.WriteLine("Please supply the light needs of the plant on a scale from 1-5");
+            int plantLightNeeds = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Please supply the asking price of the plant");
+            decimal plantAskingPrice = Decimal.Parse(Console.ReadLine());
+            Console.WriteLine("Please supply the city name of the plant");
+            string plantCityName = Console.ReadLine();
+            Console.WriteLine("Please supply the zip code");
+            int plantZipCode = Int32.Parse(Console.ReadLine());
+
+            // Taking user input and appending it to new instance of proj
+            Plant PlantToAdd = new Plant();
+            PlantToAdd.Species = plantSpecies;
+            PlantToAdd.LightNeeds = plantLightNeeds;
+            PlantToAdd.AskingPrice = plantAskingPrice;
+            PlantToAdd.City = plantCityName;
+            PlantToAdd.Zip = plantZipCode;
+            PlantToAdd.Sold = false;
+
+            // Adding user created plant
+            Globals.Plants.Add(PlantToAdd);
+        }
+
         // READ
         public static void ViewPlants()
         {
             for (int i = 0; i < Globals.Plants.Count; i++)
             {
-                Console.WriteLine($"{i + 1} - {Globals.Plants[i].Species}");
+                string soldStatusString = Globals.Plants[i].Sold ? "was sold" : "is available";
+                Console.WriteLine($"{i + 1}. {Globals.Plants[i].Species} in {Globals.Plants[i].City} {soldStatusString} for {Globals.Plants[i].AskingPrice} dollars");
+            }
+
+        }
+
+        //ADOPT
+        public static void AdoptPlant()
+        {
+            int choice;
+
+            Console.WriteLine("Choose the plant you wish to adopt");
+            for (int i = 0; i < Globals.plantsAvailable.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {Globals.plantsAvailable[i].Species}");
+            }
+            choice = Int32.Parse(Console.ReadLine());
+            object chosenPlant = Globals.plantsAvailable[choice - 1];
+
+            foreach (PropertyDescriptor desc in TypeDescriptor.GetProperties(chosenPlant))
+            {
+                  if (desc.Name == "Sold") {
+                    desc.SetValue(chosenPlant, true);
+                  }
+            }
+
+
+        }
+
+        // DELETE
+        public static void DelistAPlant()
+        {
+            string choice = null;
+
+            while (choice != "0")
+            {
+                try
+                {
+                    // loop through products but create a ReadLine
+                    Console.WriteLine("0. Goodbye");
+                    for (int i = 0; i < Globals.Plants.Count; i++)
+                    {
+                        Console.WriteLine($"{i + 1}. {Globals.Plants[i].Species}");
+
+                    }
+                    choice = Console.ReadLine();
+                    Globals.Plants.RemoveAt(Int32.Parse(choice) - 1);
+                }
+                catch
+                {
+                    break;
+                }
+
             }
 
         }
