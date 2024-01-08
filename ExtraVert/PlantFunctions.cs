@@ -58,10 +58,10 @@ namespace ExtraVert
                         PlantStatsFunctions.NumberOfAvailablePlants();
                         break;
                     case "3":
-                        Console.WriteLine("Name plant with highest light needs");
+                        PlantStatsFunctions.HighestNeeds();
                         break;
                     case "4":
-                        Console.WriteLine("Average light needs");
+                        PlantStatsFunctions.AverageLightNeeds();
                         break;
                     case "5":
                         Console.WriteLine("Percentage of plants adopted");

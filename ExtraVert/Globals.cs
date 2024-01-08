@@ -24,7 +24,7 @@ namespace ExtraVert
             new Plant()
             {
                 Species = "Sunflower",
-                LightNeeds = 4,
+                LightNeeds = 5,
                 AskingPrice = 40,
                 City = "Townsville",
                 Zip = 12345,
