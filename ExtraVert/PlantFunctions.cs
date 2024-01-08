@@ -31,6 +31,54 @@ namespace ExtraVert
             }
         }
 
+        // VIEW PLANT STATS
+        public static void ViewPlantStats()
+        {
+            string choice = null;
+            while (choice != "0")
+            {
+                Console.WriteLine(@"Choose an option: 
+                      0. Exit
+                      1. View plant with lowest price.
+                      2. View number of plants available 
+                      3. View plant with highest light needs.
+                      4. View average light needs
+                      5. View percentage of plants adopted");
+                choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "0":
+                        Console.WriteLine("Goodbye");
+                        break;
+                    case "1":
+                        PlantStatsFunctions.LowestPrice();
+                        break;
+                    case "2":
+                        Console.WriteLine("View Number of plants available");
+                        break;
+                    case "3":
+                        Console.WriteLine("Name plant with highest light needs");
+                        break;
+                    case "4":
+                        Console.WriteLine("Average light needs");
+                        break;
+                    case "5":
+                        Console.WriteLine("Percentage of plants adopted");
+                        break;
+                    default:
+                        Console.WriteLine("Please choose a valid option");
+                        break;
+                }
+
+            }
+        }
+
+
+        /// <summary>
+        /// ALL CRUD FUNCTIONAITY FOUND BELOW
+        /// </summary>
+
         // CREATE
         public static void AddPlant()
         {

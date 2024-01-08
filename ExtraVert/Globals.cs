@@ -8,6 +8,7 @@ namespace ExtraVert
 {
     internal class Globals
     {
+        // Represents entire list of plants
         public static List<Plant> Plants = new List<Plant>()
         {
             new Plant()
@@ -42,6 +43,7 @@ namespace ExtraVert
             },
         };
 
+        //Lists only the available plants that aren't sold and whose dates aren't past their Available Until.
         public static List<Plant> plantsAvailable = Plants.Where(plant => !plant.Sold && DateTime.Compare(plant.AvailableUntil, DateTime.Now.ToLocalTime()) > 0).ToList();
 
         public static void Greeting() 
@@ -60,7 +62,8 @@ namespace ExtraVert
                       2. Add a Plant 
                       3. Adopt a Plant
                       4. Delist a Plant
-                      5. Search plants based on light needs");
+                      5. Search plants based on light needs
+                      6. View Plant Statistics");
                 choice = Console.ReadLine();
 
                 switch (choice)
@@ -82,6 +85,9 @@ namespace ExtraVert
                         break;
                     case "5":
                         PlantFunctions.SearchByLightNeeds();
+                        break;
+                    case "6":
+                        Console.WriteLine("View Plant Stats");
                         break;
                     default: Console.WriteLine("Please choose a valid option");
                         break;
