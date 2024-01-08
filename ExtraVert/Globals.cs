@@ -18,12 +18,12 @@ namespace ExtraVert
                 City = "Townsville",
                 Zip = 12345,
                 Sold = false,
-                AvailableUntil = new DateTime(2024, 1, 10),
+                AvailableUntil = new DateTime(2023, 1, 10),
             },
             new Plant()
             {
                 Species = "Sunflower",
-                LightNeeds = 5,
+                LightNeeds = 4,
                 AskingPrice = 40,
                 City = "Townsville",
                 Zip = 12345,
@@ -42,7 +42,7 @@ namespace ExtraVert
             },
         };
 
-        public static List<Plant> plantsAvailable = Plants.Where(plant => !plant.Sold).ToList();
+        public static List<Plant> plantsAvailable = Plants.Where(plant => !plant.Sold && DateTime.Compare(plant.AvailableUntil, DateTime.Now.ToLocalTime()) > 0).ToList();
 
         public static void Greeting() 
         {
