@@ -18,6 +18,7 @@ namespace ExtraVert
                 City = "Townsville",
                 Zip = 12345,
                 Sold = false,
+                AvailableUntil = new DateTime(2024, 1, 10),
             },
             new Plant()
             {
@@ -27,6 +28,7 @@ namespace ExtraVert
                 City = "Townsville",
                 Zip = 12345,
                 Sold = false,
+                AvailableUntil = new DateTime(2024, 1, 10),
             },
             new Plant()
             {
@@ -36,6 +38,7 @@ namespace ExtraVert
                 City = "Townsville",
                 Zip = 12345,
                 Sold = false,
+                AvailableUntil = new DateTime(2024, 1, 10),
             },
         };
 

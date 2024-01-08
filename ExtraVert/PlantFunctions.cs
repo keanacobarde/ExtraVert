@@ -45,6 +45,13 @@ namespace ExtraVert
             string plantCityName = Console.ReadLine();
             Console.WriteLine("Please supply the zip code");
             int plantZipCode = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Please supply the date this plant is available until.");
+            Console.WriteLine("Year: ex. 2024");
+            int plantYear = int.Parse(Console.ReadLine());
+            Console.WriteLine("Month: ex. 01 - January.");
+            int plantMonth = int.Parse(Console.ReadLine());
+            Console.WriteLine("Day: ex. 1-31");
+            int plantDay = int.Parse(Console.ReadLine());
 
             // Taking user input and appending it to new instance of proj
             Plant PlantToAdd = new Plant();
@@ -54,6 +61,7 @@ namespace ExtraVert
             PlantToAdd.City = plantCityName;
             PlantToAdd.Zip = plantZipCode;
             PlantToAdd.Sold = false;
+            PlantToAdd.AvailableUntil = new DateTime(plantYear, plantMonth, plantDay);
 
             // Adding user created plant
             Globals.Plants.Add(PlantToAdd);
@@ -65,7 +73,7 @@ namespace ExtraVert
             for (int i = 0; i < Globals.Plants.Count; i++)
             {
                 string soldStatusString = Globals.Plants[i].Sold ? "was sold" : "is available";
-                Console.WriteLine($"{i + 1}. {Globals.Plants[i].Species} in {Globals.Plants[i].City} {soldStatusString} for {Globals.Plants[i].AskingPrice} dollars");
+                Console.WriteLine($"{i + 1}. {Globals.Plants[i].Species} in {Globals.Plants[i].City} {soldStatusString} for {Globals.Plants[i].AskingPrice} dollars. It is available until {Globals.Plants[i].AvailableUntil.ToString()}");
             }
 
         }
