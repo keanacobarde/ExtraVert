@@ -45,5 +45,12 @@ namespace ExtraVert
         }
 
         // Percentage of plants adopted
+        public static void percentagePlantsAdopted()
+        {
+            List<Plant> adoptedPlants = Globals.Plants.Where(plant => plant.Sold == true).ToList();
+            decimal percentPlantAdopted = (adoptedPlants.Count/Globals.Plants.Count) * 100;
+            Console.WriteLine($"Percentage of Plants Adopted: {percentPlantAdopted}%");
+        
+        }
     }
 }

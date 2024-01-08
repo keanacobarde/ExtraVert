@@ -64,7 +64,7 @@ namespace ExtraVert
                         PlantStatsFunctions.AverageLightNeeds();
                         break;
                     case "5":
-                        Console.WriteLine("Percentage of plants adopted");
+                        PlantStatsFunctions.percentagePlantsAdopted();
                         break;
                     default:
                         Console.WriteLine("Please choose a valid option");
