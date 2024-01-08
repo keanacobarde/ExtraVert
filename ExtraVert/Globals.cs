@@ -8,16 +8,18 @@ namespace ExtraVert
 {
     internal class Globals
     {
+        // Represents entire list of plants
         public static List<Plant> Plants = new List<Plant>()
         {
             new Plant()
             {
                 Species = "Venus Fly Trap",
                 LightNeeds = 4,
-                AskingPrice = 25.45M,
+                AskingPrice = 25,
                 City = "Townsville",
                 Zip = 12345,
                 Sold = false,
+                AvailableUntil = new DateTime(2024, 1, 10),
             },
             new Plant()
             {
@@ -27,6 +29,7 @@ namespace ExtraVert
                 City = "Townsville",
                 Zip = 12345,
                 Sold = false,
+                AvailableUntil = new DateTime(2024, 1, 10),
             },
             new Plant()
             {
@@ -36,10 +39,12 @@ namespace ExtraVert
                 City = "Townsville",
                 Zip = 12345,
                 Sold = false,
+                AvailableUntil = new DateTime(2024, 1, 10),
             },
         };
 
-        public static List<Plant> plantsAvailable = Plants.Where(plant => !plant.Sold).ToList();
+        //Lists only the available plants that aren't sold and whose dates aren't past their Available Until.
+        public static List<Plant> plantsAvailable = Plants.Where(plant => !plant.Sold && DateTime.Compare(plant.AvailableUntil, DateTime.Now.ToLocalTime()) > 0).ToList();
 
         public static void Greeting() 
         {
@@ -57,7 +62,8 @@ namespace ExtraVert
                       2. Add a Plant 
                       3. Adopt a Plant
                       4. Delist a Plant
-                      5. Search plants based on light needs");
+                      5. Search plants based on light needs
+                      6. View Plant Statistics");
                 choice = Console.ReadLine();
 
                 switch (choice)
@@ -79,6 +85,9 @@ namespace ExtraVert
                         break;
                     case "5":
                         PlantFunctions.SearchByLightNeeds();
+                        break;
+                    case "6":
+                        PlantFunctions.ViewPlantStats();
                         break;
                     default: Console.WriteLine("Please choose a valid option");
                         break;

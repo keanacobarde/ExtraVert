@@ -31,6 +31,54 @@ namespace ExtraVert
             }
         }
 
+        // VIEW PLANT STATS
+        public static void ViewPlantStats()
+        {
+            string choice = null;
+            while (choice != "0")
+            {
+                Console.WriteLine(@"Choose an option: 
+                      0. Exit
+                      1. View plant with lowest price.
+                      2. View number of plants available 
+                      3. View plant with highest light needs.
+                      4. View average light needs
+                      5. View percentage of plants adopted");
+                choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "0":
+                        Console.WriteLine("Goodbye");
+                        break;
+                    case "1":
+                        PlantStatsFunctions.LowestPrice();
+                        break;
+                    case "2":
+                        PlantStatsFunctions.NumberOfAvailablePlants();
+                        break;
+                    case "3":
+                        PlantStatsFunctions.HighestNeeds();
+                        break;
+                    case "4":
+                        PlantStatsFunctions.AverageLightNeeds();
+                        break;
+                    case "5":
+                        PlantStatsFunctions.percentagePlantsAdopted();
+                        break;
+                    default:
+                        Console.WriteLine("Please choose a valid option");
+                        break;
+                }
+
+            }
+        }
+
+
+        /// <summary>
+        /// ALL CRUD FUNCTIONAITY FOUND BELOW
+        /// </summary>
+
         // CREATE
         public static void AddPlant()
         {
@@ -45,6 +93,13 @@ namespace ExtraVert
             string plantCityName = Console.ReadLine();
             Console.WriteLine("Please supply the zip code");
             int plantZipCode = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Please supply the date this plant is available until.");
+            Console.WriteLine("Year: ex. 2024");
+            int plantYear = int.Parse(Console.ReadLine());
+            Console.WriteLine("Month: ex. 01 - January.");
+            int plantMonth = int.Parse(Console.ReadLine());
+            Console.WriteLine("Day: ex. 1-31");
+            int plantDay = int.Parse(Console.ReadLine());
 
             // Taking user input and appending it to new instance of proj
             Plant PlantToAdd = new Plant();
@@ -54,6 +109,7 @@ namespace ExtraVert
             PlantToAdd.City = plantCityName;
             PlantToAdd.Zip = plantZipCode;
             PlantToAdd.Sold = false;
+            PlantToAdd.AvailableUntil = new DateTime(plantYear, plantMonth, plantDay);
 
             // Adding user created plant
             Globals.Plants.Add(PlantToAdd);
@@ -65,7 +121,7 @@ namespace ExtraVert
             for (int i = 0; i < Globals.Plants.Count; i++)
             {
                 string soldStatusString = Globals.Plants[i].Sold ? "was sold" : "is available";
-                Console.WriteLine($"{i + 1}. {Globals.Plants[i].Species} in {Globals.Plants[i].City} {soldStatusString} for {Globals.Plants[i].AskingPrice} dollars");
+                Console.WriteLine($"{i + 1}. {Globals.Plants[i].Species} in {Globals.Plants[i].City} {soldStatusString} for {Globals.Plants[i].AskingPrice} dollars. It is available until {Globals.Plants[i].AvailableUntil.ToString()}");
             }
 
         }
