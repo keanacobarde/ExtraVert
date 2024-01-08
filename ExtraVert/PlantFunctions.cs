@@ -55,7 +55,7 @@ namespace ExtraVert
                         PlantStatsFunctions.LowestPrice();
                         break;
                     case "2":
-                        Console.WriteLine("View Number of plants available");
+                        PlantStatsFunctions.NumberOfAvailablePlants();
                         break;
                     case "3":
                         Console.WriteLine("Name plant with highest light needs");

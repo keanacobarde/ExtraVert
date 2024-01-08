@@ -13,12 +13,17 @@ namespace ExtraVert
         {
             string plantLowestPrice =
                 Globals.plantsAvailable.Aggregate(Globals.plantsAvailable[0], (currLongest, next) =>
-                currLongest.AskingPrice < next.AskingPrice ? next : currLongest,
+                currLongest.AskingPrice > next.AskingPrice ? next : currLongest,
                 plant => plant.Species);
             Console.WriteLine($"The least expensive plant is {plantLowestPrice}");
         }
 
         // Number of plants available.
+        public static void NumberOfAvailablePlants() 
+        {
+            Console.WriteLine($"There are {Globals.plantsAvailable.Count} plants available.");
+        }
+
 
         // Name of plant with higest needs
 

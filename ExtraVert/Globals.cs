@@ -15,11 +15,11 @@ namespace ExtraVert
             {
                 Species = "Venus Fly Trap",
                 LightNeeds = 4,
-                AskingPrice = 25.45M,
+                AskingPrice = 25,
                 City = "Townsville",
                 Zip = 12345,
                 Sold = false,
-                AvailableUntil = new DateTime(2023, 1, 10),
+                AvailableUntil = new DateTime(2024, 1, 10),
             },
             new Plant()
             {
@@ -87,7 +87,7 @@ namespace ExtraVert
                         PlantFunctions.SearchByLightNeeds();
                         break;
                     case "6":
-                        Console.WriteLine("View Plant Stats");
+                        PlantFunctions.ViewPlantStats();
                         break;
                     default: Console.WriteLine("Please choose a valid option");
                         break;
