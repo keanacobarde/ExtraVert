@@ -102,6 +102,8 @@ namespace ExtraVert
             int plantDay = int.Parse(Console.ReadLine());
 
             // Taking user input and appending it to new instance of proj
+            try
+            {
             Plant PlantToAdd = new Plant();
             PlantToAdd.Species = plantSpecies;
             PlantToAdd.LightNeeds = plantLightNeeds;
@@ -110,9 +112,13 @@ namespace ExtraVert
             PlantToAdd.Zip = plantZipCode;
             PlantToAdd.Sold = false;
             PlantToAdd.AvailableUntil = new DateTime(plantYear, plantMonth, plantDay);
-
             // Adding user created plant
             Globals.Plants.Add(PlantToAdd);
+            }
+            catch 
+            {
+                Console.WriteLine("Please pick a valid date!");
+            }
         }
 
         // READ
