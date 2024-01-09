@@ -48,7 +48,7 @@ namespace ExtraVert
         public static void percentagePlantsAdopted()
         {
             List<Plant> adoptedPlants = Globals.Plants.Where(plant => plant.Sold == true).ToList();
-            decimal percentPlantAdopted = (adoptedPlants.Count/Globals.Plants.Count) * 100;
+            double percentPlantAdopted = Math.Round((double)adoptedPlants.Count / (double)Globals.Plants.Count * 100);
             Console.WriteLine($"Percentage of Plants Adopted: {percentPlantAdopted}%");
         
         }
